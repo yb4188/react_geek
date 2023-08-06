@@ -1,11 +1,11 @@
 .login-container {
   width: 100vw;
   height: 100vh;
-  background: url("../../assets/images/login.png");
+  background: url("assets/images/login.png");
   position: relative;
 }
 
-.login {
+.login-container .login {
   width: 440px;
   height: 360px;
   position: absolute;
@@ -14,9 +14,9 @@
   transform: translate(-50%, -50%);
 }
 
-.login-img{
-    width: 200px;
-    height: 60px;
-    display: block;
-    margin: 0 auto 20px;
+.login-container .login-img {
+  width: 200px;
+  height: 60px;
+  display: block;
+  margin: 0 auto 20px;
 }
