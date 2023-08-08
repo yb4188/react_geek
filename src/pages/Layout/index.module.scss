@@ -1,0 +1,41 @@
+.layout {
+  //layout父容器的样式
+  :global {
+    .ant-layout {
+      height: 100vh;
+    }
+    .ant-layout-header {
+      padding: 0;
+    }
+    //其子容器的样式
+    .logo {
+      float: left;
+      width: 200px;
+      height: 60px;
+      background: url("~assets/images/logo.png");
+      background-size: cover;
+      margin: 2px 0;
+    }
+
+    .profile {
+      color: #fff;
+      position: absolute;
+      right: 20px;
+      font-weight: 700;
+      font-size: 18px;
+      span + span {
+        margin: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .ant-row-rtl .logo {
+      float: right;
+      margin: 16px 0 16px 24px;
+    }
+
+    .site-layout-background {
+      background: #fff;
+    }
+  }
+}

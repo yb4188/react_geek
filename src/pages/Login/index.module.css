@@ -1,11 +1,11 @@
 .login-container {
   width: 100vw;
   height: 100vh;
-  background: url("assets/images/login.png");
+  background: url("~assets/images/login.png");
   position: relative;
 }
 
-.login-container .login {
+.login-container :global .login {
   width: 440px;
   height: 360px;
   position: absolute;
@@ -14,7 +14,7 @@
   transform: translate(-50%, -50%);
 }
 
-.login-container .login-img {
+.login-container :global .login-img {
   width: 200px;
   height: 60px;
   display: block;

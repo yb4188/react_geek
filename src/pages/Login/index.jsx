@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Card, Button, Checkbox, Form, Input, message } from "antd";
-import "./index.css";
+import styles from "./index.module.scss";
 import logo from "assets/images/logo.png";
 
 import { userLogin } from "api/user";
+import { setToken } from "utils/storage";
 
 export default class Login extends Component {
   state = {
@@ -17,8 +18,16 @@ export default class Login extends Component {
     try {
       const res = await userLogin(user);
       message.success("登录成功", 1, () => {
-        localStorage.setItem("r_token", res.data.token);
-        this.props.history.push("/home");
+        //localStorage.setItem("r_token", res.data.token);
+        setToken(res.data.token);
+        //此处做个判断
+        let { state } = this.props.location;
+        console.log(state)
+        if (state) {
+          this.props.history.push(state.from);
+        } else {
+          this.props.history.push("/home");
+        }
       });
     } catch (e) {
       this.setState({
@@ -29,7 +38,7 @@ export default class Login extends Component {
   };
   render() {
     return (
-      <div className="login-container">
+      <div className={styles["login-container"]}>
         <Card className="login">
           <img src={logo} alt="" className="login-img" />
           {/* 表单 */}
