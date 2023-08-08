@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getToken } from "./storage";
 
 const request = axios.create({
   baseURL: "http://geek.itheima.net/v1_0/",
@@ -7,6 +8,9 @@ const request = axios.create({
 
 request.interceptors.request.use(
   (config) => {
+    if (getToken()) {
+      config.headers.Authorization = `Beaear ${getToken()}`;
+    }
     return config;
   },
   (error) => {
