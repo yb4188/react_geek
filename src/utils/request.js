@@ -1,8 +1,9 @@
 import axios from "axios";
 import { getToken } from "./storage";
 
+export const baseURL = "http://geek.itheima.net/v1_0/";
 const request = axios.create({
-  baseURL: "http://geek.itheima.net/v1_0/",
+  baseURL,
   timeout: 5000,
 });
 

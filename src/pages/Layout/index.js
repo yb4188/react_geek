@@ -15,6 +15,20 @@ import { removeToken } from "utils/storage";
 const { Header, Content, Sider } = Layout;
 
 export default class LayoutComponent extends Component {
+  state = {
+    selectedKey: this.props.location.pathname,
+  };
+  componentDidUpdate(prevProps) {
+    let pathname = this.props.location.pathname;
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      if (pathname.startsWith("/home/artpublish")) {
+        pathname = "/home/artpublish";
+      }
+      this.setState({
+        selectedKey: pathname,
+      });
+    }
+  }
   //退出回调
   confirm = () => {
     //localStorage.removeItem("r_token");
@@ -50,6 +64,7 @@ export default class LayoutComponent extends Component {
                 theme="dark"
                 mode="inline"
                 defaultSelectedKeys={[this.props.location.pathname]}
+                selectedKeys={[this.state.selectedKey]}
                 defaultOpenKeys={["sub1"]}
                 style={{
                   height: "100%",
@@ -79,7 +94,18 @@ export default class LayoutComponent extends Component {
                 <Switch>
                   <Route exact path="/home" component={Home}></Route>
                   <Route path="/home/artlist" component={ArtList}></Route>
-                  <Route path="/home/artpublish" component={ArtPublish}></Route>
+                  <Route
+                    exact
+                    key="add"
+                    path="/home/artpublish"
+                    component={ArtPublish}
+                  ></Route>
+                  {/* 带id的路由 */}
+                  <Route
+                    key="edit"
+                    path="/home/artpublish/:id"
+                    component={ArtPublish}
+                  ></Route>
                 </Switch>
                 {/* 子路由出口 */}
               </Content>
